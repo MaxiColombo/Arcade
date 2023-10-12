@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<body>
+
+<a href="/">Home</a>
+    <form action="/products/create" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="">Name</label>
+            <input type="text" name="name" value="<%= locals.oldData ? oldData.name : null %>" >
+            <% if (locals.errors && errors.name ) { %>
+                
+                  <%= errors.name.msg %>
+               
+                <% } %>
+        </div>
+        <div>
+            <label for="">Price</label>
+            <input type="number" name="price" value="<%= locals.oldData ? oldData.price : null %>">
+            <% if (locals.errors && errors.price) { %>
+                
+                <%= errors.price.msg %>
+             
+              <% } %>
+        </div>
+        <div>
+            <label for="">Discount</label>
+            <input type="number" name="discount" value="<%= locals.oldData ? oldData.discount : null %>">
+            <% if (locals.errors && errors.discount) { %>
+                
+                <%= errors.discount.msg %>
+             
+              <% } %>
+        </div>
+        <div>
+            <label for="">Description</label>
+            <input type="text" name="description" value="<%= locals.oldData ? oldData.description : null %>">
+            <% if (locals.errors && errors.description) { %>
+                
+                <%= errors.description.msg %>
+             
+              <% } %>
+        </div>
+        <div>
+            <label for="">Image</label>
+            <input type="file" name="file-image-products" >
+            <% if (locals.errors && errors.fileImageCreate) { %>
+                
+                <%= errors.fileImageCreate.msg %>
+             
+              <% } %>
+        </div>
+<div>
+            <label for="category">Categoria</label>
+            <select name="category">
+                <option value="" disabled selected>Elegi una categoria</option>
+                <% for (let i = 0; i < categories.length;i++){ %>
+                    <option value="<%=categories[i].id %>"> 
+                        <%=categories[i].category%>
+                    </option>
+                <% } %> 
+            </select>
+        </div>
+        
+    <button type="submit">Create</button>
+    </form>
+</body>
+</html>

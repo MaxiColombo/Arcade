@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ICONO DE LA PESTAÑA (LOGUITO) -->
+    <link rel="icon" href="/images/GalagaShip.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/login.css" />
+
+    <title>Login</title>
+</head>
+
+<body>
+
+
+    <a href="/">
+        <H1>Home</H1>
+    </a>
+    <div class="box">
+        <div class="loginImgDiv">
+            <img class="loginImg" src="/images/SpaceInvaderWhite.png" alt="Space Invader White">
+
+        </div>
+        <div class="loginDiv">
+
+            <h1>Login</h1>
+<% if(locals.errors) { %> <% } %>
+            <form action="/user/login" method="POST">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" value="<%= locals.oldData ? oldData.email : null %>">
+                    <% if (locals.errors && errors.email ) { %>
+                
+                        <%= errors.email.msg %>
+                     
+                      <% } %>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password">
+                    <% if (locals.errors && errors.password ) { %>
+                
+                        <%= errors.password.msg %>
+                     
+                      <% } %>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+            <div>
+                <p>Create An Account</p>
+                <a href="/user/register">Register</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=product.name%> Edit</title>
+</head>
+<body>
+    <h1>Editar Producto</h1>
+    <form action="/products/edit/<%=product.id%>?_method=PATCH" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="">Name</label>
+            <input type="text" name="name" value="<%=product.name%>">
+        </div>
+        <div>
+            <label for="">Price</label>
+            <input type="number" name="price" value="<%=product.price%>">
+        </div>
+        <div>
+            <label for="">Discount</label>
+            <input type="number" name="discount" value="<%=product.discount%>" >
+        </div>
+        <div>
+            <label for="">Description</label>
+            <input type="text" name="description" value="<%=product.description%>">
+        </div>
+        <div>
+            <label for="">Image</label>
+            <input type="file" name="file-image-products">
+        </div>
+        <div>
+            <label for="category">Categoria</label>
+            <select name="category">
+                
+                <% for (let i = 0; i < categories.length;i++){ %>
+
+                    <% if (categories[i].id == product.categoryId) { %>
+                        <option value="<%=categories[i].id%>" selected> 
+                            <%=categories[i].category%>
+                        </option>
+                       <% } else { %> 
+                        <option value="<%=categories[i].id%>"> 
+                            <%=categories[i].category%>
+                        </option>
+                        <% } %>
+                    
+                <% } %> 
+            </select>
+        </div>
+    <button type="submit">Edit Product</button>
+    
+    </form>
+    
+</body>
+</html>

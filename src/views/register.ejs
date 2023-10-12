@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ICONO DE LA PESTAÑA (LOGUITO) -->
+    <link rel="icon" href="/images/GalagaShip.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/login.css" />
+
+    <title>Register</title>
+</head>
+
+<body>
+    <a href="/">
+        <H1>Home</H1>
+    </a>
+    <div class="box">
+        <div class="loginImgDiv">
+            <img class="loginImg" src="/images/SpaceInvaderWhite.png" alt="Space Invader White">
+
+        </div>
+        <div class="loginDiv">
+
+            <h1>Register</h1>
+
+            <form action="/user/register" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" value="<%= locals.oldData ? oldData.name : null %>">
+                    <% if (locals.errors && errors.name ) { %>
+                
+                        <%= errors.name.msg %>
+                     
+                      <% } %>
+                </div>
+                <div>
+                    <label for="lastname">Lastname</label>
+                    <input type="text" name="lastname" value="<%= locals.oldData ? oldData.lastname : null %>">
+                    <% if (locals.errors && errors.lastname ) { %>
+                
+                        <%= errors.lastname.msg %>
+                     
+                      <% } %>
+                </div>
+                <div>
+                    <label for="dni">D.N.I</label>
+                    <input type="number" name="dni" value="<%= locals.oldData ? oldData.dni : null %>">
+                    <% if (locals.errors && errors.dni ) { %>
+                
+                        <%= errors.dni.msg %>
+                     
+                      <% } %>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" value="<%= locals.oldData ? oldData.email : null %>">
+                    <% if (locals.errors && errors.email ) { %>
+                
+                        <%= errors.email.msg %>
+                     
+                      <% } %>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password">
+                    <% if (locals.errors && errors.password ) { %>
+                
+                        <%= errors.password.msg %>
+                     
+                      <% } %>
+                </div>
+                <div>
+
+                    <label for="passwordConfirm">Password Confirm</label>
+                    <input type="password" name="passwordConfirm">
+                    <% if (locals.errors && errors.passwordConfirm ) { %>
+                
+                        <%= errors.passwordConfirm.msg %>
+                     
+                      <% } %>
+
+                </div>
+                <div>
+                    <label for="image">Profile picture</label>
+                    <input type="file" name="ProfileImage" value="<%= locals.oldData ? oldData.ProfileImage : null %>">
+                    <% if (locals.errors && errors.ProfileImage ) { %>
+                
+                        <%= errors.ProfileImage.msg %>
+                     
+                      <% } %>
+                </div>
+                <div>
+                    <label for="role">Rol</label>
+                    <select class="input-create" type="text" name="role" id="role"
+                        value="<%= locals.oldData ? oldData.role : null %>">
+                        <option disabled selected>Elegi una categoria</option>
+                        <% for (let i=0; i < roles.length;i++){ %>
+
+                            <option value="<%=roles[i].id%>">
+                                <%=roles[i].role%>
+                            </option>
+                            <% } %>
+                    </select>
+                </div>
+                <button type="submit">Create</button>
+            </form>
+            <div>
+            <p>Already have an account?</p>
+            <a href="/user/login">Login</a>
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>

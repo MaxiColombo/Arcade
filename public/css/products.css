@@ -1,0 +1,29 @@
+
+.title{
+    color: blue;
+    font-size:20px;
+    text-align: center;
+    padding: 20px 0;
+}
+.productName{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: small;
+
+}
+.products .product .imgProduct img {
+    width: 40vh;
+    max-width: 100%;
+    transition: all 0.5s;
+    border: 5px solid white;
+    height: 30vh;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product{
+    padding: 10px;
+}
