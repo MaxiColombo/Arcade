@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="/css/carrito.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/carrito.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Include del encabezado -->
     <%- include("./partials/header", { titulo: "Carrito de Compras" }) %>
     <main>
       <h1 class="title">Tu Carrito de Compras</h1>
-      <div class="carrito">
-        <table>
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Precio Unitario</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% products.forEach(product => { %>
-            <tr>
-                <!-- ARREGLAR TODO ESTO -->
-            <td><%= product.name %></td>
-        </tr>
-            
+      <div class="cart">
+        
+          <div class="cartDetail">
+           
             <% carritoItems.forEach(item => { %>
-              <tr>
-                <td><%= item.product_id %></td>
-              </tr>
-            <% }); %>
-            <% }); %>
-          </tbody>
-        </table>
+
+              <% const product = products.find(p => p.id === item.product_id); %>
+            <article class="allDetailsCart">
+              <div class="detailName">
+              <p>Producto :<%= product.name %></p>
+            </div>
+            <div class="cartItems">
+              <p>Cantidad :<%= item.cantidad %></p>
+              <p>Precio Unitario :<%= product.price %></p>
+              <p>Subtotal :<%= item.cantidad * product.price %></p>
+            </div>
+            </article>
+              <% }); %>
+            
+            </div>
       </div>
     </main>
   </body>
