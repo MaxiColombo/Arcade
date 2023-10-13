@@ -17,6 +17,11 @@
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <!-- PARA LA LOGICA DE LOS BOTONES CON JS --> <!-- NO LOGRE QUE FUNCIONE AL 100 YA QUE ME AUNQUE FUNCIONABA ME TIRABA ERORRES -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+    <script src="/js/carrito-buttons.js"></script> -->
+    
+    <!--  -->
   </head>
   <body>
     <!-- Include del encabezado -->
@@ -24,26 +29,46 @@
     <main>
       <h1 class="title">Tu Carrito de Compras</h1>
       <div class="cart">
-        
-          <div class="cartDetail">
+        <div class="cartDetail">
+          <% carritoItems.forEach(item => { %> <% const product =
+          products.find(p => p.id === item.product_id); %>
+          <div class="productName">
+          <p><%= product.name %></p>
+        </div>
+          <article class="allDetailsCart">
            
-            <% carritoItems.forEach(item => { %>
+            <div class="detailItems">
+              
 
-              <% const product = products.find(p => p.id === item.product_id); %>
-            <article class="allDetailsCart">
-              <div class="detailName">
-              <p>Producto :<%= product.name %></p>
-            </div>
-            <div class="cartItems">
+              <!-- <div class="cartItems"> -->
               <p>Cantidad :<%= item.cantidad %></p>
               <p>Precio Unitario :<%= product.price %></p>
               <p>Subtotal :<%= item.cantidad * product.price %></p>
+              <!-- </div> -->
             </div>
-            </article>
-              <% }); %>
-            
-            </div>
+
+            <div class="buttons">
+              <form action="/products/compras/agregar/<%= product.id %>" method="POST" enctype="multipart/form-data">
+              <button type="submit" class="buttonCart">Add 1</button>
+            </form>
+            <form action="/products/compras/eliminar/<%= product.id %>?_method=DELETE" method="POST">
+              <button type="submit" class="buttonCart">Delete 1</button>
+          </form>
+              <form action="/products/compras/delete/<%= product.id %>?_method=DELETE" method="POST">
+                  <button type="submit" class="buttonCart">Delete Product</button>
+              </form>
+          </div>
+          </article>
+
+          
+          <% }); %>
+        </div>
       </div>
     </main>
   </body>
+
 </html>
+
+
+
+

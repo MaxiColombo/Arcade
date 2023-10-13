@@ -47,6 +47,8 @@ const requireLogin = require("../middlewares/requireLogin");
 
 //MAIN
 router.get("/"/* ,requireLogin */,productController.products); /* VOLVER A PONER EL REQUIRE LOGIN */
+//SEARC
+router.post("/search",productController.search)
 //POST Y GET DE CREAR
 router.get("/create",productController.create);
 router.post("/create",upload.single("file-image-products"),validateProductCreateAndEdit,productController.sendCreate);
@@ -59,8 +61,14 @@ router.patch("/edit/:id",upload.single("file-image-products"),validateProductCre
 router.get("/delete/:id",productController.deleteView);
 router.delete("/delete/:id",productController.delete);
 
-//Carrito de compras
+//GET Y POST DE CARRITO DE COMPRAS
 router.get("/carrito",productController.carrito);
 router.post("/compras", productController.agregarCarrito);
+//BORRAR PRODUCTO ENTERO DE CARRITO
+router.delete("/compras/delete/:id",productController.deleteBuy)
+//BORRAR O AGREAGAR 1 SOLO PRODUCTO DE CARRITO
+router.post("/compras/agregar/:id", productController.addOneProductToCart);
+router.delete("/compras/eliminar/:id", productController.deleteOneProductFromCart);
+
 
 module.exports = router;

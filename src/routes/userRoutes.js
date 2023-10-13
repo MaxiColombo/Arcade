@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     callback(null,"public/images");
     },
     filename:function(req, file , callback){
-        callback(null,file.filename + Date.now()+ "image" + path.extname(file.originalname));
+        callback(null,file.fieldname + Date.now()+ "image" + path.extname(file.originalname)); //OJo con el fieldname ES CON D
     }
     });
     const upload = multer({storage: storage}); 

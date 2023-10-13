@@ -1,23 +1,25 @@
 <header>
-        <div class="header">
-
-            <div class="logoDiv">
-                <img class="logo" src="/images/GalagaShip.png" alt="logo">
-            </div>
-
-            <div class="guidesDiv">
-                <div class="guides"><a href="/">Homepage</a></div>
-                <div class="guides"><a href="/products">Products</a></div>
-                <div class="guides"><a href="/user/profile">Profile</a></div>
-
-
-
-                <div class="buscarIconDiv">
-                    <form action="/search" method="POST"></form>
-                    <div class="buscar"><input class="inputSearch" type="text" name="buscar" placeholder="Buscar">
-                    </div>
-                    <i class="fa fa-search"> </i>
-                </div>
-            </div>
+    <div class="header">
+        <div class="logoDiv">
+            <img class="logo" src="/images/GalagaShip.png" alt="logo" />
         </div>
-    </header>
+
+        <div class="guidesDiv">
+            <div class="guides"><a href="/">Homepage</a></div>
+            <div class="guides"><a href="/products">Products</a></div>
+            <div class="guides"><a href="/user/profile">Profile</a></div>
+            <div class="guides"><a href="/products/carrito">Carrito</a></div>
+
+            <div class="buscarIconDiv">
+                <form class="seeker" action="/products/search" method="POST">
+                    <div class="buscar">
+                        <input class="inputSearch" type="text" name="seeker" placeholder="Buscar" /> <!-- Ojo con el name seeker, ya que en el controlador lo llamamos asi -->
+                    </div>
+                </form>
+               
+            </div>
+
+            
+        </div>
+    </div>
+</header>
