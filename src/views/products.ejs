@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- ICONO DE LA PESTAÑA (LOGUITO) -->
-    <link rel="icon" href="/images/GalagaShip.png">
+    <link rel="icon" href="/images/GalagaShip.png" />
     <!-- CSS -->
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/products.css" />
+    <!-- SCRIPTS -->
+    <!-- OBLIGATORIO PARA QUE LOS ARCHIVOS .JS funcionen -->
+    <script src="/js/carrito-product.js"></script>
     <!-- FONTS -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  
-     <title>Products</title>
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
+    <title>Products</title>
+  </head>
+
+  <body>
+    <!-- Include del encabezado -->
     <%- include("./partials/header",{titulo:"home"}) %>
     <main>
-        <h1 class="title">List Of Our Best Products</h1>
-    <div class="products">
-    <% products.forEach(product=> { %>
-        <div class="product">
-        <a href="products/<%= product.id %>" class="productName">
-        <h4><%= product.name %></h4>
-        <div class="imgProduct">
-        <img src="/images/<%=product.image%>">
-    </div>
-    </a>
-</div>
+      <h1 class="title">List Of Our Best Products</h1>
+      <div class="products">
+        <% products.forEach(product => { %>
+          <div class="product">
+            <a href="products/detail/<%= product.id %>" class="productName">
+              <h4><%= product.name %></h4>
+              <div class="imgProduct">
+                <img src="/images/<%= product.image %>" />
+              </div>
+            </a>
+            <!-- Formulario dentro del bucle para cada producto -->
+            <form action="/products/compras" method="post">
+              <input type="hidden" name="product_id" value="<%= product.id %>">
+              <button class="addToCart" type="submit">Agregar Al Carrito</button>
+          </form>
+          </div>
+          
         <% }); %>
-    </div>
-    <h1><a href="/products/create">Create Product</a></h1>
-</main>
-</body>
+      </div>
+      <h1><a href="/products/create">Create Product</a></h1>
+    </main>
+  </body>
 </html>

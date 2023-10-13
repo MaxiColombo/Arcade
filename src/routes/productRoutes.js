@@ -46,12 +46,12 @@ const productController = require("../controllers/productController.js");
 const requireLogin = require("../middlewares/requireLogin");
 
 //MAIN
-router.get("/"/* ,requireLogin */,productController.products);
+router.get("/"/* ,requireLogin */,productController.products); /* VOLVER A PONER EL REQUIRE LOGIN */
 //POST Y GET DE CREAR
 router.get("/create",productController.create);
 router.post("/create",upload.single("file-image-products"),validateProductCreateAndEdit,productController.sendCreate);
 //GET PRODUCT DETAIL
-router.get("/:id",productController.detail);
+router.get("/detail/:id",productController.detail);
 //PATCH Y GET DE EDITAR
 router.get("/edit/:id",productController.edit);
 router.patch("/edit/:id",upload.single("file-image-products"),validateProductCreateAndEdit,productController.update);
@@ -59,5 +59,8 @@ router.patch("/edit/:id",upload.single("file-image-products"),validateProductCre
 router.get("/delete/:id",productController.deleteView);
 router.delete("/delete/:id",productController.delete);
 
+//Carrito de compras
+router.get("/carrito",productController.carrito);
+router.post("/compras", productController.agregarCarrito);
 
 module.exports = router;

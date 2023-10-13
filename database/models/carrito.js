@@ -1,5 +1,5 @@
 module.exports = function (sequelize, dataTypes) {
-  let alias = "Product";
+  let alias = "Carrito";
 
   let cols = {
     id: {
@@ -7,30 +7,28 @@ module.exports = function (sequelize, dataTypes) {
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: dataTypes.STRING,
-    },
-    price: {
+    user_id: {
       type: dataTypes.INTEGER,
     },
-    discount: {
+    product_id: {
       type: dataTypes.INTEGER,
     },
-    description: {
-      type: dataTypes.STRING,
-    },
-    image: {
-      type: dataTypes.STRING,
-    },
-    categoryId: {
+    cantidad: {
       type: dataTypes.INTEGER,
     },
   };
   let config = {
-    tableName: "products",
+    tableName: "carrito",
     timestamps: false,
   };
-  let Product = sequelize.define(alias, cols, config);
-
-  return Product;
+  let Carrito = sequelize.define(alias, cols, config);
+  return Carrito;
 };
+
+/* CREATE TABLE `carrito` (
+    `id` INT AUTO_INCREMENT,
+    `user_id` INT,
+    `product_id` INT,
+    `cantidad` INT,
+    PRIMARY KEY (`id`)
+); */

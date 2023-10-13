@@ -37,6 +37,16 @@ CREATE TABLE `roles` (
    PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `carrito` (
+    `id` INT AUTO_INCREMENT,
+    `user_id` INT,
+    `product_id` INT,
+    `cantidad` INT,
+    PRIMARY KEY (`id`)
+);
+
+
+
 insert into categories values (1, "Consolas"),(2,"Celulares"),(3,"Notebooks"),(4,"Dispositivos De Audio");
 
 insert into roles values (1, "Administrador"),(2,"Cliente");

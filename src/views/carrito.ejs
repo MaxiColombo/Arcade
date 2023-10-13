@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="/css/carrito.css">
+</head>
+<body>
+    <!-- Include del encabezado -->
+    <%- include("./partials/header", { titulo: "Carrito de Compras" }) %>
+    <main>
+      <h1 class="title">Tu Carrito de Compras</h1>
+      <div class="carrito">
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% products.forEach(product => { %>
+            <tr>
+                <!-- ARREGLAR TODO ESTO -->
+            <td><%= product.name %></td>
+        </tr>
+            
+            <% carritoItems.forEach(item => { %>
+              <tr>
+                <td><%= item.product_id %></td>
+              </tr>
+            <% }); %>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

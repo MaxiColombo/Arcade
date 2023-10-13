@@ -99,6 +99,47 @@ const productController = {
       }
     })
     res.redirect("/");
+  },
+  
+    carrito: (req, res) => {
+
+      const carritoItems = db.Carrito.findAll();
+      const products = db.Product.findAll();
+      
+      Promise.all([products, carritoItems]).then(function ([products, carritoItems]) {
+        return res.render("carrito", { products: products, carritoItems: carritoItems });
+      });
+  
+    },
+    agregarCarrito: function (req, res) {
+      const productId = req.body.product_id; // Obtén el ID del producto de la URL
+  
+      // Verificar si el usuario ha iniciado sesión o recuperar el ID de usuario de otra manera
+      const userId = req.user ? req.user.id : 1; // Supongamos que el ID de usuario es 1
+  
+      // Verificar si el producto ya está en el carrito del usuario
+      db.Carrito.findOne({
+          where: {
+              user_id: userId,
+              product_id: productId
+          }
+      }).then(function (entry) {
+          if (entry) {
+              // Si el producto ya está en el carrito, actualiza la cantidad
+              entry.cantidad += 1;
+              entry.save();
+          } else {
+              // Si el producto no está en el carrito, crea una nueva entrada
+              db.Carrito.create({
+                  user_id: userId,
+                  product_id: productId,
+                  cantidad: 1
+              });
+          }
+  
+          // Redirigir al usuario de vuelta a la página del carrito o a donde desees
+          res.redirect("/products/carrito");
+      });
   }
 
 
