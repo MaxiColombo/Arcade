@@ -13,7 +13,7 @@ const productController = {
   products: (req, res) => {
     db.Product.findAll()
       .then(function (products) {
-        return res.render("products", { products: products })
+        return res.render("products", { products: products,user: req.session.userLogged})
       })
   },
   search: (req, res) => {
@@ -21,13 +21,13 @@ const productController = {
 
     db.Product.findAll({ where: { name: { [Op.like]: search } } })
         .then(function (products) { 
-            return res.render("products", { products: products });
+            return res.render("products", { products: products,user: req.session.userLogged});
         });
 },
   create: (req, res) => {
     db.Category.findAll()
       .then(function (categories) {
-        return res.render("create", { categories: categories })
+        return res.render("create", { categories: categories,user: req.session.userLogged })
       })
 
   },
@@ -40,7 +40,8 @@ const productController = {
           return res.render("create", {
             errors: resultValidation.mapped(),
             oldData:req.body,
-            categories: categories
+            categories: categories,
+            user: req.session.userLogged
           });
         })
     } else {
@@ -71,7 +72,7 @@ const productController = {
     let category = db.Category.findAll();
 
     Promise.all([askId, category]).then(function ([product, categories]) {
-      return res.render("edit", { product: product, categories: categories })
+      return res.render("edit", { product: product, categories: categories,user: req.session.userLogged })
     })
   },
   update: function (req, res) {
@@ -97,7 +98,7 @@ const productController = {
     let category = db.Category.findAll();
 
     Promise.all([askId, category]).then(function ([product, categories]) {
-      return res.render("deleteView", { product: product, categories: categories })
+      return res.render("deleteView", { product: product, categories: categories,user: req.session.userLogged})
     })
 
   },
@@ -117,7 +118,7 @@ const productController = {
       const products = db.Product.findAll();
       
       Promise.all([products, carritoItems]).then(function ([products, carritoItems]) {
-        return res.render("carrito", { products: products, carritoItems: carritoItems });
+        return res.render("carrito", { products: products, carritoItems: carritoItems,user: req.session.userLogged});
       });
   
     },
@@ -187,7 +188,7 @@ const productController = {
         }
 
         // Redirigir al usuario de vuelta a la página del carrito o a donde desees
-        res.redirect("/products/carrito");
+       
     });
   },
 addOneProductToCart: function (req, res) {

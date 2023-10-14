@@ -24,6 +24,9 @@
             <div class="guides productPage"><a href="/products">Products</a></div>
             <div class="guides profilePage"><a href="/user/profile">Profile</a></div>
             <div class="guides cartPage"><a href="/products/carrito">Cart</a></div>
+            <% if(locals.isLogged==true && locals.user.roleId === 2 ){ %>
+                <div class="guides cartPage"><a href="/products/create">Create Product</a></div>
+             <% } %>
 
             <search></search>
             <div class="buscarIconDiv">

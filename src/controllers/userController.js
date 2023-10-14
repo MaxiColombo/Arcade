@@ -7,11 +7,11 @@ const db = require(path.join(__dirname, "../../database/models"));
 
 const userController = {
     login: (req, res) => {
-        res.render("login");
+        res.render("login",{user: req.session.userLogged});
     },
     register: (req, res) => {
         db.Role.findAll().then(function (roles) {
-            return res.render("register", { roles: roles });
+            return res.render("register", { roles: roles,user: req.session.userLogged});
         });
     },
     createUser: (req, res) => {
@@ -25,7 +25,7 @@ const userController = {
                             email: {
                                 msg: 'Este email ya está registrado'
                             }
-                        }, roles: roles, oldData: req.body
+                        }, roles: roles, oldData: req.body,user: req.session.userLogged
 
                     });
                 }
@@ -57,7 +57,7 @@ const userController = {
                                 password: {
                                     msg: 'Los contraseñas nos son iguales'
                                 }
-                            }, roles: roles, oldData: req.body
+                            }, roles: roles, oldData: req.body,user: req.session.userLogged
                         })
                     }
                 }//else
@@ -70,7 +70,7 @@ const userController = {
             
             let resultValidation = validationResult(req);
             if (resultValidation.errors.length > 0) {
-                    return res.render("login", { errors: resultValidation.mapped(), oldData: req.body });
+                    return res.render("login", { errors: resultValidation.mapped(), oldData: req.body,user: req.session.userLogged });
             }
             if (userToLogin) {
                 let isOkThePassword = bcrypt.compareSync(req.body.password, userToLogin.password);
@@ -84,7 +84,7 @@ const userController = {
                         password: {
                             msg: 'La contraseña es incorrecta'
                         }
-                    }, oldData: req.body
+                    }, oldData: req.body,user: req.session.userLogged
                 });
             }
     
@@ -93,7 +93,7 @@ const userController = {
                     email: {
                         msg: 'No se encuentra este email en nuestra base de datos'
                     }
-                },oldData: req.body
+                },oldData: req.body,user: req.session.userLogged
             });
         });  
     },
