@@ -9,11 +9,7 @@
     <link rel="icon" href="/images/GalagaShip.png">
     <!-- CSS -->
     <link rel="stylesheet" href="/css/main.css" />
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
 
     <!-- ICON -->
     <script src="https://kit.fontawesome.com/895ffaabf9.js" crossorigin="anonymous"></script>
@@ -24,29 +20,7 @@
 <body>
 
 
-    <header>
-        <div class="header">
-
-            <div class="logoDiv">
-                <img class="logo" src="/images/GalagaShip.png" alt="logo">
-            </div>
-
-            <div class="guidesDiv">
-                <div class="guides"><a href="/">Homepage</a></div>
-                <div class="guides"> <a href="/products">Products</a></div>
-                <div class="guides"><a href="/user/profile">Profile</a></div>
-
-
-
-                <!-- <div class="buscarIconDiv">
-                    <form action="/search" method="POST"></form>
-                    <div class="buscar"><input class="inputSearch" type="text" name="buscar" placeholder="Buscar">
-                    </div>
-                    <i class="fa fa-search"> </i>
-                </div> -->
-            </div>
-        </div>
-    </header>
+    <%- include("./partials/header",{titulo:"home"}) %>
     <section class="mid">
         <div class="title">
             <h1>Wellcome To The Arcade</h1>

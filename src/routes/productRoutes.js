@@ -62,7 +62,7 @@ router.get("/delete/:id",productController.deleteView);
 router.delete("/delete/:id",productController.delete);
 
 //GET Y POST DE CARRITO DE COMPRAS
-router.get("/carrito",productController.carrito);
+router.get("/carrito",requireLogin,productController.carrito);
 router.post("/compras", productController.agregarCarrito);
 //BORRAR PRODUCTO ENTERO DE CARRITO
 router.delete("/compras/delete/:id",productController.deleteBuy)

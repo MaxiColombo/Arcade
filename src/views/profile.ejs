@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    
+</head>
+<header><%- include("./partials/header", { titulo: "Profile" }) %></header>
+<body>
     <a href="/">Home</a>
     <%= user.email  %>
     <%= user.name %>
@@ -15,8 +19,5 @@
     <form action="/user/deleteUser/<%= user.id %>" method="GET">
     <button type="submit">Detele Account</button>
     </form>
-</head>
-<body>
-    
 </body>
 </html>

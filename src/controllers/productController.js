@@ -1,4 +1,4 @@
-
+//Express Validator
 const { validationResult } = require('express-validator');
 /* const fs = require("fs") */
 const path = require("path");
@@ -20,7 +20,7 @@ const productController = {
     let search = "%" + req.body.seeker + "%";
 
     db.Product.findAll({ where: { name: { [Op.like]: search } } })
-        .then(function (products) { // Cambiar "product" a "products"
+        .then(function (products) { 
             return res.render("products", { products: products });
         });
 },
@@ -49,7 +49,7 @@ const productController = {
         price: req.body.price,
         discount: req.body.discount,
         description: req.body.description,
-        image: req.file ? req.file.filename : "Smirnoff-out.jpg",
+        image: req.file ? req.file.filename : "error.jpg",
         categoryId: req.body.category,
 
       });
@@ -61,7 +61,7 @@ const productController = {
   detail: function (req, res) {
     db.Product.findByPk(req.params.id)
       .then(function (products) {
-        res.render("productsDetail", { products: products })
+        res.render("productsDetail", { products: products,user: req.session.userLogged })
       })
 
   },

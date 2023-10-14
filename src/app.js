@@ -2,6 +2,7 @@
 //npm install express
 const express = require('express')
 const app = express()
+
 //ESTO ES PARA EL METODO POST (INSTALAR EXPRESS Y EXPRESS GENERATOR SI O SI- si no nos llegan datos al form)
 app.use(express.urlencoded({extended: false})); //Esto es para formData
 app.use(express.json())
@@ -14,6 +15,9 @@ app.use(express.static("./public"));
 //PARA EL METODO PATCH 
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
+
+
+
 //PARA EL SESSION
 const session = require('express-session');
 app.use(session({
@@ -25,6 +29,10 @@ app.use(session({
 const mainRoutes = require("./routes/mainRoutes");
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
+
+//PARA UTILIZAR EL ISLOGGED EN TODA LA PAGINA, ya que esta en el pie -- SI O SI MAS ABAJO DEL Session ya que esto proviene del session
+const usserLoggedMiddleware = require("./middlewares/usserLoggedMiddleware");
+app.use(usserLoggedMiddleware);
 
 
 app.use("/user",userRoutes);

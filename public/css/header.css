@@ -1,7 +1,10 @@
 * {
     font-family: 'Press Start 2P', cursive;
     box-sizing: border-box;
-    
+    user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none; /* HACE QUE CUANDO CLICKEAMOS Y PASAMOS MOUSE POR ENCIMA NO SE VUELVA AZUL LA IMAGEN */
 }
 
 
@@ -86,6 +89,7 @@ div {
     width: 90px;
     margin-top: 10px;
     transition: all 1s;
+    
 }
 
 .logo:hover {
