@@ -24,9 +24,15 @@
             <div class="guides productPage"><a href="/products">Products</a></div>
             <div class="guides profilePage"><a href="/user/profile">Profile</a></div>
             <div class="guides cartPage"><a href="/products/carrito">Cart</a></div>
-            <% if(locals.isLogged==true && locals.user.roleId === 2 ){ %>
+            <% if(locals.isLogged==true && locals.user.roleId === 1 ){ %>
                 <div class="guides cartPage"><a href="/products/create">Create Product</a></div>
              <% } %>
+             <% if(locals.isLogged==false ){ %>
+                <div class="guides loginPahe"><a href="/user/login">Login</a></div>
+             <% } else { %>
+               <div class="guides logoutPage"><a href="/user/logout" >Logout</a></div>
+             <% } %>
+             
 
             <search></search>
             <div class="buscarIconDiv">

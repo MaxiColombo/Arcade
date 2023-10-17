@@ -16,23 +16,36 @@ app.use(express.static("./public"));
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
-
+//npm install cookie-parser 
+const cookieParser = require('cookie-parser');
+//Coockie Parser de arriba pero creo que debe estar abajo del session
+app.use(cookieParser());
 
 //PARA EL SESSION
 const session = require('express-session');
-app.use(session({
-  secret: "ProyectoSoloMaxi",
-  resave: true,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    secret: "ProyectoSoloMaxi",
+    resave: false, 
+    saveUninitialized: true,
+  })
+);
 //Llamamos a las rutas
 const mainRoutes = require("./routes/mainRoutes");
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
 
+
+
+
+
 //PARA UTILIZAR EL ISLOGGED EN TODA LA PAGINA, ya que esta en el pie -- SI O SI MAS ABAJO DEL Session ya que esto proviene del session
 const usserLoggedMiddleware = require("./middlewares/usserLoggedMiddleware");
 app.use(usserLoggedMiddleware);
+//MIDDLEWARE PARA PODER LAS COOCKIES
+/* const cookiesMiddleware = require("./middlewares/coockiesMiddleware");
+app.use(cookiesMiddleware()); */
+
 
 
 app.use("/user",userRoutes);

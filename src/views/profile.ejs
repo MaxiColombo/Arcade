@@ -9,7 +9,6 @@
 </head>
 <header><%- include("./partials/header", { titulo: "Profile" }) %></header>
 <body>
-    <a href="/">Home</a>
     <%= user.email  %>
     <%= user.name %>
     <form action="/user/logout" method="GET">

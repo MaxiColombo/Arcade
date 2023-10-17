@@ -23,11 +23,13 @@
 <div>
     <img src="/images/<%=products.image%>" alt="">
 </div>
-<% if(locals.isLogged==true && locals.user.roleId === 2){ %> <!-- ===2 ya que los administradores son ID 2 -->
+<% if(locals.isLogged==true && locals.user.roleId === 1){ %> <!-- ===2 ya que los administradores son ID 2 -->
     <a href="/products/edit/<%=products.id%>">Edit Product</a>
     <a href="/products/delete/<%= products.id %>">Delete</a>
+   
     
     <% } %>
+   
 
 </body>
 </html>

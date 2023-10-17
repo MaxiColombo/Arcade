@@ -40,10 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-
+ 
   const createLink = document.querySelector("cartPage");
 
-  const isAdminCreate = locals.user.roleId === 2;
+  const isAdminCreate = locals.user.roleId === 1;
 
   if (isAdminCreate) {
     createLink.style.display = 'none';

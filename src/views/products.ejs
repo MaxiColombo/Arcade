@@ -40,7 +40,7 @@
             </div>
           </a>
             <!-- Formulario dentro del bucle para cada producto -->
-            <form action="/products/compras" method="post">
+            <form action="/products/compras" method="post" class="addToCartForm">
               <input type="hidden" name="product_id" value="<%= product.id %>">
               <button class="addToCart" type="submit">Agregar Al Carrito</button>
             </form>

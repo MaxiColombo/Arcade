@@ -17,10 +17,10 @@
     width: 100%;
     max-width: 100%;
     transition: all 0.5s;
-    /* border: 5px solid white; */
     height: 30vh;
 }
 .products .product .imgProduct {
+  margin: auto;
     width: 35vh; /* PONER 300PX */
     border-radius: 5px;
     border: 2px solid transparent; /* Borde transparente */
@@ -54,4 +54,16 @@
 }
 .product{
     padding: 10px;
+}
+.addToCart{
+  text-decoration: none;
+ padding: 5px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+
+}
+.addToCartForm{
+  text-align: center;
+  padding-top: 10px;
 }
